@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "NODE_ENV=test mocha",
-    "precommit": "lint-staged"
+    "test": "NODE_ENV=test mocha"
   },
   "lint-staged": {
     "*.js": [
