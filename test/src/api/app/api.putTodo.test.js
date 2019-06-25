@@ -69,7 +69,7 @@ describe("TEST 「PUT /api/todos/:id」", () => {
       );
     }
   });
-  
+
   // テストが通る
   it("idの引数と合致するTodoがない場合、エラーが返る(ver.for([]なし))", async () => {
     const invalidIdList = [0, -1, "0", undefined, null, {}];
@@ -87,22 +87,4 @@ describe("TEST 「PUT /api/todos/:id」", () => {
     }
   });
 
-  it("completedにboolean型以外を送った場合、エラーが返る", async () => {
-    const invalidCompletedList = [-1, 2, "0", null, [], {}];
-    const id = 3;
-
-    invalidCompletedList.forEach(async completed => {
-      const data = {
-        title: "title",
-        body: "body",
-        completed: completed,
-      };
-      const response = await updateTodo(400, id, data);
-
-      assert.strictEqual(
-        response.body.message,
-        "completedにはboolean型のみを入力してください"
-      );
-    });
-  });
 });
