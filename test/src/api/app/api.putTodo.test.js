@@ -35,7 +35,8 @@ describe("TEST 「PUT /api/todos/:id」", () => {
     await index.Todo.truncate();
   });
 
-  it("idの引数に不正な値が入っていた場合、エラーが返る(ver.forEach)", async () => {
+  // テストが例外処理で通る
+  it("idの引数に不正な値が入っていた場合、エラーが返る(ver.forEach) ", async () => {
     const invalidIdList = [0, -1, "3", undefined, null, {}, []];
     const data = {
       title: "title",
@@ -52,6 +53,7 @@ describe("TEST 「PUT /api/todos/:id」", () => {
     });
   });
 
+  // テストが通らない
   it("idの引数と合致するTodoがない場合、エラーが返る(ver.for([]あり))", async () => {
     const invalidIdList = [0, -1, "0", undefined, null, {}, []];
     const data = {
@@ -67,6 +69,8 @@ describe("TEST 「PUT /api/todos/:id」", () => {
       );
     }
   });
+  
+  // テストが通る
   it("idの引数と合致するTodoがない場合、エラーが返る(ver.for([]なし))", async () => {
     const invalidIdList = [0, -1, "0", undefined, null, {}];
     const data = {
